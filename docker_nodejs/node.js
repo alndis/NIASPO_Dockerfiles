@@ -1,13 +1,14 @@
 const http = require('http');
+const os = require('os');
 
-// Создаем простой сервер
 const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Привет! Это базовый сервер Node.js\n');
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write('Node.js Server is running\n');
+  res.write(`Operating System: ${os.type()}\n`);
+  res.write(`Node.js Version: ${process.version}\n`);
+  res.end();
 });
 
-// Сервер слушает порт 3000
 server.listen(3000, () => {
-  console.log('Сервер запущен на http://localhost:3000/');
+  console.log('Server is listening on port 3000');
 });
