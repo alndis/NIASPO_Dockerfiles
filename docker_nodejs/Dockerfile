@@ -4,7 +4,7 @@ FROM node:16
 WORKDIR /app
 
 # Копируем package.json и index.js в рабочую директорию
-COPY index.js .
+COPY ./docker_nodejs/index.js .
 
 # Устанавливаем зависимости (если есть package.json)
 RUN npm install || true
