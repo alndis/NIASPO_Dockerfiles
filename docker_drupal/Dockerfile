@@ -1,0 +1,3 @@
+FROM drupal
+
+EXPOSE 3000
