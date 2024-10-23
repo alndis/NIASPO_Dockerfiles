@@ -1,8 +1,16 @@
-# Используем базовый образ, поддерживающий Docker (например, docker:latest)
-FROM docker:latest
+#alndis
+FROM node:14
 
-# Копируем docker-compose.yml в контейнер
-COPY . .
+WORKDIR /api
 
-# Запускаем docker-compose
-CMD ["sh", "-c", "docker-compose up"]
+RUN apt-get update
+# Устанавливаем зависимости
+RUN npm install
+
+# Копируем остальные файлы в рабочую директорию
+COPY ./api/package.json /api
+COPY ./api/server.js /api
+
+EXPOSE 3001 
+
+CMD ["node", "server.js"]
