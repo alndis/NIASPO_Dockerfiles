@@ -2,7 +2,7 @@
 FROM node:14
 
 WORKDIR /usr/src/app
-COPY ./server.js /usr/src/app/server.js
+COPY server.js /usr/src/app/server.js
 
 # Копируем package.json и package-lock.json
 COPY package*.json ./
