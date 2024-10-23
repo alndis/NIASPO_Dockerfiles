@@ -1,15 +1,18 @@
+#alndis
 FROM node:14
 
-WORKDIR /usr/src/app
-
-# Копируем package.json и package-lock.json
-COPY package*.json ./
-
+WORKDIR /api
+    
+RUN apt-get update
 # Устанавливаем зависимости
+
+
+# Копируем остальные файлы в рабочую директорию
+COPY ./api/package.json package.json 
+COPY ./api/server.js server.js
+
 RUN npm install
 
-# Копируем все файлы проекта
-COPY . .
+EXPOSE 3001 
 
-EXPOSE 3000
 CMD ["node", "server.js"]
