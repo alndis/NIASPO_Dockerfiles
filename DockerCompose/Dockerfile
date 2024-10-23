@@ -5,4 +5,4 @@ FROM docker:latest
 COPY . .
 
 # Запускаем docker-compose
-CMD ["docker-compose", "up"]
+CMD ["sh", "-c", "docker-compose up"]
