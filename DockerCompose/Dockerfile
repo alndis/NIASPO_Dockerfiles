@@ -5,12 +5,14 @@ WORKDIR /api
 
 RUN apt-get update
 # Устанавливаем зависимости
-RUN npm install
+
 
 # Копируем остальные файлы в рабочую директорию
-COPY ./api/package.json /api
-COPY ./api/server.js /api
+COPY ./api/package.json /api/package.json 
+COPY ./api/server.js /api/server.js
+
+RUN npm install
 
 EXPOSE 3001 
 
-CMD ["node", "server.js"]
+CMD ["node", "/api/server.js"]
